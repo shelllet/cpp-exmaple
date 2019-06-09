@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     layout_ = new QGridLayout(ui->centralWidget);
 
-    int index = 0;
+    size_t index = 0;
     for (int i = 0; i < 3; ++i) {
 
         for (int j = 0; j< 3; ++j) {
