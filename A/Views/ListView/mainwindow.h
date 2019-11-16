@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "custommodel.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,5 +18,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    CustomModel customModel_;
+
 };
 #endif // MAINWINDOW_H

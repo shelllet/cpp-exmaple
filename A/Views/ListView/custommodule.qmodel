@@ -35,9 +35,32 @@
                     <name>CustomModule</name>
                    </MObject>
                   </base-MObject>
+                  <last-modified>1573267977189</last-modified>
+                  <toolbarid>Classes</toolbarid>
                  </MDiagram>
                 </base-MDiagram>
                </MCanvasDiagram>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{9c3903ae-137c-4d5c-8621-d1986f05fcce}</uid>
+             <target>
+              <instance type="MPackage">
+               <MPackage>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{9c3903ae-137c-4d5c-8621-d1986f05fcce}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>New Package</name>
+                 </MObject>
+                </base-MObject>
+               </MPackage>
               </instance>
              </target>
             </handle>

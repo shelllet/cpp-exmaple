@@ -32,6 +32,7 @@ public:
     Qt::ItemFlags flags(const QModelIndex& index) const override;
 
 private:
+    QVector<QString> modelData_;
 };
 
 #endif // CUSTOMMODEL_H
