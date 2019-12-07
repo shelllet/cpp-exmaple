@@ -14,18 +14,18 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListView" name="listView">
+   <widget class="QTreeView" name="treeView">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>250</y>
+      <x>290</x>
+      <y>230</y>
       <width>256</width>
       <height>192</height>
      </rect>
     </property>
-    <property name="viewMode">
-     <enum>QListView::IconMode</enum>
-    </property>
+    <attribute name="headerVisible">
+     <bool>false</bool>
+    </attribute>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
