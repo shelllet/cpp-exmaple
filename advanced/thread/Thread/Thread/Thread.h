@@ -2,7 +2,9 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_Thread.h"
-
+#include <QFile>
+#include <QMutex>
+#include <QReadWriteLock>
 class Thread : public QMainWindow
 {
     Q_OBJECT
@@ -21,4 +23,7 @@ public:
     QString text() const;
 private:
     Ui::ThreadClass ui;
+    QFile file = { "./setting.txt" };
+    QMutex mutex;
+    QReadWriteLock locker;
 };

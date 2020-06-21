@@ -3,6 +3,8 @@
 #include <QFile>
 #include <QDebug>
 #include "WorkerThread.h"
+
+
 Thread::Thread(QWidget* parent)
 	: QMainWindow(parent)
 {
@@ -13,19 +15,28 @@ Thread::Thread(QWidget* parent)
 	connect(ui.pushButton_test, &QPushButton::clicked, this, &Thread::test);
 	connect(ui.pushButton_main, &QPushButton::clicked, this, &Thread::mainTest);
 	connect(ui.pushButton_move, &QPushButton::clicked, this, &Thread::moveToThread);
+
+	file.open(QIODevice::WriteOnly);
 }
 
 void Thread::save()
 {
 	qDebug() << "Main thread ID: " << QThread::currentThreadId();
 
-	auto* thread = QThread::create([this]() {
-		QFile file("./setting.txt");
-
-		file.open(QIODevice::WriteOnly);
-
-		file.write(ui.lineEdit->text().toUtf8());
+	auto* thread = QThread::create([this]() {	
+		//mutex.lock();
+		//QMutexLocker locker(&mutex);
+		locker.lockForWrite();
+		if (file.write(ui.lineEdit->text().toUtf8()) > 0) {
+			qDebug() << "write ok";
+		}
+		else {
+			qDebug() << "write failed";
+		}
+		//mutex.unlock();
+		locker.unlock();
 		qDebug() << "THREAD ID: " << QThread::currentThreadId();
+		QThread::sleep(3);
 		});
 
 	thread->start();
@@ -33,19 +44,27 @@ void Thread::save()
 
 void Thread::set()
 {
-	QThread::create([](Thread* thread) {
-		QFile file("./setting.txt");
-		file.open(QIODevice::ReadOnly);
-		thread->ui.lineEdit->setText(file.readAll());
+	QThread::create([this](Thread* thread) {
+		for (;;)
+		{
+			save();
+		}
 
+		//QFile file("./setting.txt");
+		//file.open(QIODevice::ReadOnly);
+		//thread->ui.lineEdit->setText(file.readAll());
 		}, this)->start();
+
+
+	
 }
 
 void Thread::test()
 {
-	WorkerThread* thread = new WorkerThread(this, this);
+	//WorkerThread* thread = new WorkerThread(this, this);
 
-	thread->start();
+	//thread->start();
+	file.close();
 }
 
 void Thread::mainTest()
