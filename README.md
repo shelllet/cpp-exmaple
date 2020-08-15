@@ -1,4 +1,4 @@
-# c++
+# c++ example
 [Youtube](https://www.youtube.com/playlist?list=PLZzwFJOgBE3We8y8WGmW_ahJA8BqmfIcR)
 # qt
 
