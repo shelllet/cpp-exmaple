@@ -4,6 +4,23 @@
 #include <iostream>
 #include <boost/lexical_cast.hpp>
 
+struct A {
+    int value;
+
+    friend std::ostream& operator<< (std::ostream& os, const A& a) {
+        os << a.value;
+        return os;
+    }
+    
+    friend std::istream& operator>> (std::istream& is, A& a) {
+        is >> a.value;
+        return is;
+    }
+
+
+};
+
+
 int main()
 {
     std::cout << "Hello World!\n";
@@ -15,6 +32,11 @@ int main()
     std::cout << string << std::endl;
 
     std::cout << boost::lexical_cast<int>(string);
+
+
+  auto a =  boost::lexical_cast<A>(123);
+
+  std::cout << a.value << std::endl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
